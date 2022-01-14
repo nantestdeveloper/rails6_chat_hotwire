@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>HotWire Demo</h1>
+  <%# <h4>A Rails, Hotwire demo</h4>         %>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete,class: "float-right" %>
+  <%#= link_to "Sign out", destroy_user_session_path, method: :get,class: "float-right" %>
+
+
+  <%= turbo_frame_tag 'post_form' do %>
+    <%= render partial: 'form' %>
+  <% end %>
+
+  <%= turbo_stream_from :posts %>
+  <%= turbo_frame_tag 'posts' do %>
+      <%= render @posts %>
+  <% end %>
+</div>
